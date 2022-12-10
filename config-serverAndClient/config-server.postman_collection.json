@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "690c9464-1a8b-4217-b2e7-ec4554f438ec",
+		"name": "config-server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22662867"
+	},
+	"item": [
+		{
+			"name": "get_config-server",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9999/config-client/default",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"config-client",
+						"default"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "config-client_properties",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8085/properties",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"properties"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actuator_refresh",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8085/actuator/refresh",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"actuator",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9999/decrypt",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "98487b135fbd008762cb3f283146b3fb1e212e2e660096f397a8c8669004427a82fbc43010f639919a628c2fa376a932"
+				},
+				"url": {
+					"raw": "localhost:9999/decrypt",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"decrypt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9999/encrypt",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Password to Encrypt"
+				},
+				"url": {
+					"raw": "localhost:9999/encrypt",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"encrypt"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
