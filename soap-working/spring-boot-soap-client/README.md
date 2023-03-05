@@ -1,0 +1,1 @@
+It's a client of soap-ws: /home/<user>/code_base/soap/soap/spring-boot-soap-producer/spring-boot-soap-producer-2.6.4/
