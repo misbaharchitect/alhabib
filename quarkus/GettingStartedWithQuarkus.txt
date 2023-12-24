@@ -108,3 +108,4 @@ V) Jaeger
 	5) Launch userms
 	6) Through Swagger-UI make few calls
 	7) Open Jaeger-UI: http://localhost:16686/ (check Jaeger-UI port in docker-compose-opentelemetry.yml)
+
