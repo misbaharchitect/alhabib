@@ -1,0 +1,110 @@
+
+For CLI (Optional):
+https://quarkus.io/get-started/
+https://quarkus.io/guides/maven-tooling
+https://quarkus.io/guides/gradle-tooling
+https://quarkus.io/guides/datasource
+https://quarkus.io/guides/openapi-swaggeruiOpen in browser: http://localhost:8080/
+https://quarkus.io/guides/hibernate-orm-panache
+
+Quarkus dev mode:
+quarkus dev
+./mvnw compile quarkus:dev
+
+I) My First Quarkus microservice (Developer Joy):
+	1) https://code.quarkus.io
+	2) Change aritfacto text to "userms" and change to Java-11
+	3) Add following dependencies(extensions):
+		i) RESTEasy Reactive Jackson
+		ii) JDBC Driver - H2
+		iii) SmallRye OpenAPI
+	4) Generate(zip) and Extract
+	5) Run following command for starting quarkus application in dev mode
+	./mvnw compile quarkus:dev
+	6) Open in browser the default app page of quarkus application: http://localhost:8080/
+	7) Open in browser REST API: http://localhost:8080/hello
+	8) Open in browser Swagger-UI: http://localhost:8080/q/swagger-ui/
+	9) Open in browser Dev-UI: http://localhost:8080/q/dev-ui/
+	10) Import userms in your IDE
+	
+
+!!! Good Job !!!
+
+II) Database intercation with Panache
+	1) ./mvnw quarkus:list-extensions
+	./mvnw quarkus:list-extensions | grep panache
+	Execute any one of the below to add panache dependency: quarkus-hibernate-orm-panache
+		a) ./mvnw quarkus:add-extension -Dextensions="io.quarkus:quarkus-hibernate-orm-panache"
+		b) quarkus ext add hibernate-orm-panache	
+		c) Manually add into pom.xml
+		<dependency>
+			<groupId>io.quarkus</groupId>
+			<artifactId>quarkus-hibernate-orm-panache</artifactId>
+		</dependency>
+		
+III) client microservice:
+	1) https://code.quarkus.io
+	2) Change aritfacto text to "client-userms" and change to Java-11
+	3) Add following dependencies(extensions):
+		i) RESTEasy Reactive Jackson
+		ii) RESTEasy Reactive's REST Client Jackson
+		iii) SmallRye OpenAPI
+		iV) SmallRye Fault Tolerance
+	4) Generate(zip) and Extract
+	5) Run following command for starting quarkus application in dev mode
+	./mvnw compile quarkus:dev -Dquarkus.http.port=8082
+	6) Open in browser the default app page of quarkus application: http://localhost:8082/
+	7) Open in browser REST API: http://localhost:8082/hello
+	8) Open in browser Swagger-UI: http://localhost:8082/q/swagger-ui/
+	9) Open in browser Dev-UI: http://localhost:8082/q/dev-ui/
+	10) Import userms in your IDE
+	
+Curl Script to simulate Bulkhead:
+count=0
+while (( count++ <= 100 )); do
+curl -i \
+-H "Content-Type: application/json" \
+-X GET \
+-d "2.03" \
+http://localhost:8082/client/users-bh
+echo
+done
+
+IV) Keycloak Integration:
+	1) https://code.quarkus.io
+	2) Change aritfacto text to "paymentms-oidc" and change to Java-11
+	3) Add following dependencies(extensions):
+		i) RESTEasy Reactive Jackson
+		ii) OpenID Connect
+		iii) SmallRye OpenAPI
+	4) Generate(zip) and Extract
+	5) Run following command for starting quarkus application in dev mode
+	./mvnw compile quarkus:dev -Dquarkus.http.port=8083
+	6) Open in browser the default app page of quarkus application: http://localhost:8083/
+	7) Open in browser REST API: http://localhost:8083/hello
+	8) Open in browser Swagger-UI: http://localhost:8083/q/swagger-ui/
+	9) Open in browser Dev-UI: http://localhost:8083/q/dev-ui/
+	10) Import userms in your IDE
+	
+	A Dev Services Keycloak with default configuration contains a user named alice/bob with the password alice/bob and a third user as "admin:admin"
+	
+	
+	john_admin:
+	curl -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ4UlVIeEdWWERNalRPM0R4NHQzRGdoOU1fc1dzWmxwY193LVJvVFNzQUg4In0.eyJleHAiOjE3MDMzOTQ2MTcsImlhdCI6MTcwMzM5NDAxOSwiYXV0aF90aW1lIjoxNzAzMzk0MDE3LCJqdGkiOiJhMTFlY2M3Yi04YmEwLTRiMjUtYjkyMy00ZDQ4MWM4Y2UwZjUiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjMyNzY5L3JlYWxtcy9xdWFya3VzIiwic3ViIjoiMmExYjc4ZDgtZTU4Ni00MzY0LTk4MTktMzJmN2Y2MTMxMWNlIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoicXVhcmt1cy1hcHAiLCJub25jZSI6InEwWDcwTVciLCJzZXNzaW9uX3N0YXRlIjoiOWE3Y2JhODUtOWRiOS00ZTUyLWI3ODEtNWJkOTc5NWI0MzYyIiwic2NvcGUiOiJvcGVuaWQgbWljcm9wcm9maWxlLWp3dCIsInNpZCI6IjlhN2NiYTg1LTlkYjktNGU1Mi1iNzgxLTViZDk3OTViNDM2MiIsInVwbiI6ImpvaG5fYWRtaW4iLCJncm91cHMiOlsibXlmaXJzdF9hZG1pbl9yZWFsbXJvbGUiLCJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtcXVhcmt1cyIsInVtYV9hdXRob3JpemF0aW9uIl19.Aog3YhC_bDG2z82i4G8AXKe9_ozI-a-VqlA2kt7f9fSZboQ1Y1eOt5lzczZVGsnO54t5qckU8ZLwz7x1mqHzXxAhxNXInp7qNyL0ssIk8UbQG6VDg0BTIiDBvpURD8JANe6UVU_PE1-3fcrWMRXpg4S2QMVLvg5DBv8b_w6D_kx_ocpKQ8zaLWHP4gSVF9J0gXkoHzXiqLHb2luQMvJ4A5K6c4bcj_GO0UplAbN4gJsotHpDKswPo1g4NEmlsuGdcTVKEhZ4u469gAizl-r3wx3KIwP4B92mzT3kDfZQ4h_DQlv5hXYjOOH7ACkTg2FNmk-1Kat85y4Jf2btaklIFw" localhost:8083/whoami -v
+	
+	john_user:
+	curl -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ4UlVIeEdWWERNalRPM0R4NHQzRGdoOU1fc1dzWmxwY193LVJvVFNzQUg4In0.eyJleHAiOjE3MDMzOTQ2NjksImlhdCI6MTcwMzM5NDI3MSwiYXV0aF90aW1lIjoxNzAzMzk0MjY5LCJqdGkiOiI4MDIwMzRmMC0xZmI4LTRjNGEtYmFiZS00Y2RiOWJhNmMyYTMiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjMyNzY5L3JlYWxtcy9xdWFya3VzIiwic3ViIjoiMThjMGFiMDItYTM2Mi00OTBkLWIwMzItMzE3MDQzNmFlODkxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoicXVhcmt1cy1hcHAiLCJub25jZSI6ImdKZnBaSFkiLCJzZXNzaW9uX3N0YXRlIjoiNzBlYjE0OTctNjhlNy00MjNhLWJmNTAtMTU1ZjkxZjU2MzhkIiwic2NvcGUiOiJvcGVuaWQgbWljcm9wcm9maWxlLWp3dCIsInNpZCI6IjcwZWIxNDk3LTY4ZTctNDIzYS1iZjUwLTE1NWY5MWY1NjM4ZCIsInVwbiI6ImpvaG5fdXNlciIsImdyb3VwcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtcXVhcmt1cyIsInVtYV9hdXRob3JpemF0aW9uIiwibXlmaXJzdF9ub3JtYWxfcmVhbG1yb2xlIl19.DFJozA-vrepBBpQO356fpBQTQ3OW4xWmgboOwbicO-ij74oFM0JKj8KZqxFz7T-dDicAhVtROfYCH7pzKklWcGuEbx5OSi1CsQO0_9I67pZO4kxlJC2aPWpj7RdQFYVQKF3AckVluDhF7eY2Vd3cLyf_ZdJv3WswOOi7HiuSlMC_ZhdyVP-NcrZrO2FmRgB6gcz55cKiW43SVDRnzE9jEtWTIXGdv7MiIcoJZCBV8gC5fYBoS26a4xZ5thnZm1dBwxiHMpVLhzcUZ-XmDy-hA2jqLJ5hhPICqyp6yrQhv5joZsA1HS77cmmc93UsQ-gdE5nDVIOBfxVE0ruXdV2YnQ" localhost:8083/whoami -v
+	
+	curl -x POST http://localhost:32769/realms/quarkus/broker/keycloak-oidc/endpoint 
+
+
+V) Jaeger
+	1) Add to your microservice:
+		./mvnw quarkus:add-extension -Dextensions="opentelemetry"
+	2) add docker-compose file
+	3) 
+	docker-compose -f docker-compose-opentelemetry.yml up -d
+	4) Launch client-userms
+	5) Launch userms
+	6) Through Swagger-UI make few calls
+	7) Open Jaeger-UI: http://localhost:16686/ (check Jaeger-UI port in docker-compose-opentelemetry.yml)
