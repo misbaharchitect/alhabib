@@ -3,17 +3,21 @@ For CLI (Optional):
 https://quarkus.io/get-started/
 https://quarkus.io/guides/maven-tooling
 https://quarkus.io/guides/gradle-tooling
+https://quarkus.io/guides/cli-tooling
 https://quarkus.io/guides/datasource
 https://quarkus.io/guides/openapi-swaggeruiOpen in browser: http://localhost:8080/
 https://quarkus.io/guides/hibernate-orm-panache
 
+$ quarkus create app org.acme:quarkus-in-action -P 3.5.0
+ --extension resteasy-reactive
+ 
 Quarkus dev mode:
 quarkus dev
 ./mvnw compile quarkus:dev
 
 I) My First Quarkus microservice (Developer Joy):
 	1) https://code.quarkus.io
-	2) Change aritfacto text to "userms" and change to Java-11
+	2) Change aritfact text to "userms" and change to Java-11
 	3) Add following dependencies(extensions):
 		i) RESTEasy Reactive Jackson
 		ii) JDBC Driver - H2
@@ -109,3 +113,12 @@ V) Jaeger
 	6) Through Swagger-UI make few calls
 	7) Open Jaeger-UI: http://localhost:16686/ (check Jaeger-UI port in docker-compose-opentelemetry.yml)
 
+VI) Prometheus + Grafana:
+	1) 
+	./mvnw quarkus:add-extension -Dextensions="micrometer-registry-prometheus"
+	./mvnw quarkus:add-extension -Dextensions='container-image-jib'
+	build userms image:
+	./mvnw clean package -Dquarkus.container-image.build=true -Dmaven.test.skip -Dquarkus.profile=dev
+	
+VII) Kafka:
+https://smallrye.io/smallrye-reactive-messaging/smallrye-reactive-messaging/3.4/kafka/kafka.html
