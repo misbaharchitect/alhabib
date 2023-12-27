@@ -8,8 +8,7 @@ https://quarkus.io/guides/datasource
 https://quarkus.io/guides/openapi-swaggeruiOpen in browser: http://localhost:8080/
 https://quarkus.io/guides/hibernate-orm-panache
 
-$ quarkus create app org.acme:quarkus-in-action -P 3.5.0
- --extension resteasy-reactive
+$ quarkus create app org.acme:quarkus-in-action -P 3.5.0  --extension resteasy-reactive
  
 Quarkus dev mode:
 quarkus dev
@@ -74,7 +73,25 @@ http://localhost:8082/client/users-bh
 echo
 done
 
-IV) Keycloak Integration:
+IV) Jaeger
+	1) Add to your microservice:
+		./mvnw quarkus:add-extension -Dextensions="opentelemetry"
+	2) add docker-compose file
+	3) 
+	docker-compose -f docker-compose-opentelemetry.yml up -d
+	4) Launch client-userms
+	5) Launch userms
+	6) Through Swagger-UI make few calls
+	7) Open Jaeger-UI: http://localhost:16686/ (check Jaeger-UI port in docker-compose-opentelemetry.yml)
+
+V) Prometheus + Grafana:
+	1) 
+	./mvnw quarkus:add-extension -Dextensions="micrometer-registry-prometheus"
+	./mvnw quarkus:add-extension -Dextensions='container-image-jib'
+	build userms image:
+	./mvnw clean package -Dquarkus.container-image.build=true -Dmaven.test.skip -Dquarkus.profile=dev
+
+VI) Keycloak Integration:
 	1) https://code.quarkus.io
 	2) Change aritfacto text to "paymentms-oidc" and change to Java-11
 	3) Add following dependencies(extensions):
@@ -90,6 +107,13 @@ IV) Keycloak Integration:
 	9) Open in browser Dev-UI: http://localhost:8083/q/dev-ui/
 	10) Import userms in your IDE
 	
+application.properties:
+%test.quarkus.oidc.enabled=false
+quarkus.devservices.timeout=2m
+quarkus.oidc.application-type=service
+quarkus.keycloak.devservices.shared=true
+
+
 	A Dev Services Keycloak with default configuration contains a user named alice/bob with the password alice/bob and a third user as "admin:admin"
 	
 	
@@ -100,25 +124,84 @@ IV) Keycloak Integration:
 	curl -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ4UlVIeEdWWERNalRPM0R4NHQzRGdoOU1fc1dzWmxwY193LVJvVFNzQUg4In0.eyJleHAiOjE3MDMzOTQ2NjksImlhdCI6MTcwMzM5NDI3MSwiYXV0aF90aW1lIjoxNzAzMzk0MjY5LCJqdGkiOiI4MDIwMzRmMC0xZmI4LTRjNGEtYmFiZS00Y2RiOWJhNmMyYTMiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjMyNzY5L3JlYWxtcy9xdWFya3VzIiwic3ViIjoiMThjMGFiMDItYTM2Mi00OTBkLWIwMzItMzE3MDQzNmFlODkxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoicXVhcmt1cy1hcHAiLCJub25jZSI6ImdKZnBaSFkiLCJzZXNzaW9uX3N0YXRlIjoiNzBlYjE0OTctNjhlNy00MjNhLWJmNTAtMTU1ZjkxZjU2MzhkIiwic2NvcGUiOiJvcGVuaWQgbWljcm9wcm9maWxlLWp3dCIsInNpZCI6IjcwZWIxNDk3LTY4ZTctNDIzYS1iZjUwLTE1NWY5MWY1NjM4ZCIsInVwbiI6ImpvaG5fdXNlciIsImdyb3VwcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtcXVhcmt1cyIsInVtYV9hdXRob3JpemF0aW9uIiwibXlmaXJzdF9ub3JtYWxfcmVhbG1yb2xlIl19.DFJozA-vrepBBpQO356fpBQTQ3OW4xWmgboOwbicO-ij74oFM0JKj8KZqxFz7T-dDicAhVtROfYCH7pzKklWcGuEbx5OSi1CsQO0_9I67pZO4kxlJC2aPWpj7RdQFYVQKF3AckVluDhF7eY2Vd3cLyf_ZdJv3WswOOi7HiuSlMC_ZhdyVP-NcrZrO2FmRgB6gcz55cKiW43SVDRnzE9jEtWTIXGdv7MiIcoJZCBV8gC5fYBoS26a4xZ5thnZm1dBwxiHMpVLhzcUZ-XmDy-hA2jqLJ5hhPICqyp6yrQhv5joZsA1HS77cmmc93UsQ-gdE5nDVIOBfxVE0ruXdV2YnQ" localhost:8083/whoami -v
 	
 	curl -x POST http://localhost:32769/realms/quarkus/broker/keycloak-oidc/endpoint 
-
-
-V) Jaeger
-	1) Add to your microservice:
-		./mvnw quarkus:add-extension -Dextensions="opentelemetry"
-	2) add docker-compose file
-	3) 
-	docker-compose -f docker-compose-opentelemetry.yml up -d
-	4) Launch client-userms
-	5) Launch userms
-	6) Through Swagger-UI make few calls
-	7) Open Jaeger-UI: http://localhost:16686/ (check Jaeger-UI port in docker-compose-opentelemetry.yml)
-
-VI) Prometheus + Grafana:
-	1) 
-	./mvnw quarkus:add-extension -Dextensions="micrometer-registry-prometheus"
-	./mvnw quarkus:add-extension -Dextensions='container-image-jib'
-	build userms image:
-	./mvnw clean package -Dquarkus.container-image.build=true -Dmaven.test.skip -Dquarkus.profile=dev
 	
-VII) Kafka:
+VII) Deployment: client-userms
+
+cd client-userms
+JAR:
+./mvnw clean package -Dmaven.test.skip
+java -jar target/quarkus-app/quarkus-run.jar 
+
+UBER-JAR:
+./mvnw package -Dquarkus.package.type=uber-jar -Dmaven.test.skip
+
+NATIVE:
+./mvnw clean install -Pnative -Dmaven.test.skip
+./target/client-userms-1.0.0-SNAPSHOT-runner
+started in 0.062s
+
+KUBERNETES Integration:
+./mvnw quarkus:add-extension -Dextensions="kubernetes"
+./mvnw quarkus:add-extension -Dextensions="minikube"
+
+application.properties
+quarkus.container-image.group=quarkus-mp
+quarkus.container-image.name=client-userms
+quarkus.kubernetes.name=client-userms
+
+./mvnw clean install -Dmaven.test.skip
+/target/kubernetes -> .yml and .json version of the required configuration
+build Docker image:
+./mvnw clean package -Dquarkus.container-image.build=true -Dmaven.test.skip 
+
+Install Minikube:
+follow the instructions to install both kubectl and Minikube, along with any pre-requisites.
+https://kubernetes.io/docs/tasks/tools/
+
+kubectl:
+snap install kubectl --classic
+kubectl version --client
+
+minikube: https://minikube.sigs.k8s.io/docs/start/
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+minikube start
+eval $(minikube -p minikube docker-env)
+Deploy to Minikube:
+./mvnw clean package -Dquarkus.kubernetes.deploy=true -Dmaven.test.skip 
+
+minikube service list
+| default     | client-userms                       | http/80      | http://192.168.49.2:31658 |
+
+Browser:  http://192.168.49.2:31658 
+
+
+
+
+minikube status
+minikube stop
+minikube delete
+
+
+VIII) Kafka:
 https://smallrye.io/smallrye-reactive-messaging/smallrye-reactive-messaging/3.4/kafka/kafka.html
+
+	1) https://code.quarkus.io
+	2) Change aritfacto text to "kafka-producer" and change to Java-11
+	3) Add following dependencies(extensions):
+		i) RESTEasy Reactive Jackson
+		ii) SmallRye Reactive Messaging - Kafka Connector
+		iii) SmallRye OpenAPI
+	4) Generate(zip) and Extract
+	5) Run following command for starting quarkus application in dev mode
+	./mvnw compile quarkus:dev -Dquarkus.http.port=8086
+	6) Open in browser the default app page of quarkus application: http://localhost:8086/
+	7) Open in browser REST API: http://localhost:8086/hello
+	8) Open in browser Swagger-UI: http://localhost:8086/q/swagger-ui/
+	9) Open in browser Dev-UI: http://localhost:8086/q/dev-ui/
+	10) Import userms in your IDE
+
+You can add kafka extension in a generated project as below:
+quarkus ext add quarkus-smallrye-reactive-messaging
+
