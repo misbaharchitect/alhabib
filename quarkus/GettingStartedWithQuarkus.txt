@@ -157,6 +157,8 @@ build Docker image:
 Install Minikube:
 follow the instructions to install both kubectl and Minikube, along with any pre-requisites.
 https://kubernetes.io/docs/tasks/tools/
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
 
 kubectl:
 snap install kubectl --classic
