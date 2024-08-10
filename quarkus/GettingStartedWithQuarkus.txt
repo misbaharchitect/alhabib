@@ -1,4 +1,43 @@
 
+
+We can create Quarkus applications in three distinctive ways plus an additional way in an IDE & through REST:
+
+    1) Quarkus Maven plugin
+    2) Quarkus CLI (Command Line Interface)
+    3) The website’s graphical starter interface
+
+Note:  to generate a project utilizing Gradle build tool, you can add --gradle flag.
+
+1) Quarkus Maven plugin
+If you maven installed use following:
+mvn io.quarkus.platform:quarkus-maven-plugin:3.5.0:create \
+    -DplatformVersion=3.5.0 \
+    -DprojectGroupId=org.acme \
+    -DprojectArtifactId=quarkus-maven-generated \
+    -Dextensions="resteasy-reactive"
+
+2) Quarkus CLI (Command Line Interface) - Using SDKMan
+First install SDKMan if not insatlled already:
+curl -s https://get.sdkman.io | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+sdk version
+echo $PATH
+
+https://quarkus.io/guides/cli-tooling
+sdk install quarkus
+quarkus --version
+quarkus --help
+
+quarkus create app -h
+quarkus create app -help
+quarkus create app org.acme:quarkus-cli-generated -P 3.5.0 --extension resteasy-reactive
+
+3) The website’s graphical starter interface
+
+4) generator also provides a REST API exposed at https://code.quarkus.io/api
+curl "https://code.quarkus.io/api/download?g=org.acme&a=quarkus-rest-generated&e=quarkus-resteasy-reactive" --output quarkus-in-action.zip
+
+
 For CLI (Optional):
 https://quarkus.io/get-started/
 https://quarkus.io/guides/maven-tooling
