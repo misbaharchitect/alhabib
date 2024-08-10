@@ -67,6 +67,16 @@ quarkus build
 # Gradle
 ./gradlew build
 
+# Below is not a fat JAR (also known as über JAR) and references externalized libraries/dependencies:
+# It's useful for Docker layers (src/main/docker/Dockerfile.jvm)
+java -jar target/quarkus-app/quarkus-run.jar
+
+Native compilation with GraalVM:
+
+
+
+---------------------Above is 2024--------------------------------
+
 I) My First Quarkus microservice (Developer Joy):
 	1) https://code.quarkus.io
 	2) Change aritfact text to "userms" and change to Java-11
