@@ -33,10 +33,14 @@ quarkus create app -help
 quarkus create app org.acme:quarkus-cli-generated -P 3.5.0 --extension resteasy-reactive
 
 3) The website’s graphical starter interface
+https://code.quarkus.io
+select Java version (17, 21)
 
 4) generator also provides a REST API exposed at https://code.quarkus.io/api
 curl "https://code.quarkus.io/api/download?g=org.acme&a=quarkus-rest-generated&e=quarkus-resteasy-reactive" --output quarkus-in-action.zip
 
+Quarkus Resteasy reactive is now Quarkus Rest:
+https://quarkus.io/guides/rest-migration
 
 For CLI (Optional):
 https://quarkus.io/get-started/
