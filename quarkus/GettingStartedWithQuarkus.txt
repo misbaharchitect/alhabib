@@ -54,8 +54,18 @@ https://quarkus.io/guides/hibernate-orm-panache
 $ quarkus create app org.acme:quarkus-in-action -P 3.5.0  --extension resteasy-reactive
  
 Quarkus dev mode:
+# Maven
+./mvnw quarkus:dev
+# CLI
 quarkus dev
-./mvnw compile quarkus:dev
+
+Quarkus PROD:
+# Maven
+./mvnw clean package
+# CLI
+quarkus build
+# Gradle
+./gradlew build
 
 I) My First Quarkus microservice (Developer Joy):
 	1) https://code.quarkus.io
