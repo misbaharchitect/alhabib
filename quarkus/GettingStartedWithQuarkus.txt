@@ -92,6 +92,31 @@ docker run -i --rm -p 8080:8080 quarkus/quarkus-in-action
 ./mvnw quarkus:help
 ./mvnw quarkus:list-extensions
 
+# Live Reload
+
+# Profile
+By default, there are three configuration profiles:
+    prod — active when the application is running in production mode
+    dev — active when application runs in Dev mode
+    test — active during tests
+custom user profiles with quarkus.profile
+Profile specific proerty:
+%dev.quarkus.http.port=7777
+
+Quarkus provides two separate ways of overriding configuration dynamically - JVM system properties and environment variables.
+priority: system properties, environment variables, and only then application.properties
+$ GREETING="Environment variable value" ./mvnw quarkus:dev -Dgreeting="System property value"
+$ GREETING="Environment variable value" quarkus dev -Dgreeting="System property value"
+
+#DEV UI:
+
+#DEV Serices: Database, Broker
+Dev Services design allows them to only work in Dev mode and during tests.
+Dev Services generally require Docker (or Podman) to be available because they use containers to run the underlying services. There are some exceptions, for example, the H2 and Derby databases - these are run directly inside the JVM of your application.
+
+# Continuous Testing
+
+
 ---------------------Above is 2024--------------------------------
 
 I) My First Quarkus microservice (Developer Joy):
