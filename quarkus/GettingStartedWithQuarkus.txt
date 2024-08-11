@@ -116,6 +116,9 @@ Dev Services generally require Docker (or Podman) to be available because they u
 
 # Continuous Testing
 
+Database(Panache):
+Active record pattern
+
 
 ---------------------Above is 2024--------------------------------
 
