@@ -86,7 +86,7 @@ $ quarkus build --native
 # Build Container Image:
 ./mvnw package -Pnative 
 docker build -f src/main/docker/Dockerfile.native-micro -t quarkus/quarkus-gui-generated .
-docker run -i --rm -p 8080:8080 quarkus/quarkus-in-action
+docker run -i --rm -p 8080:8080 <docker-image>
 
 # Extensions
 ./mvnw quarkus:help
