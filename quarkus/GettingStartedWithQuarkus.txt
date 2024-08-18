@@ -1,4 +1,47 @@
 
+
+# We can create Quarkus applications in three distinctive ways plus an additional way in an IDE & through REST:
+
+    1) Quarkus Maven plugin
+    2) Quarkus CLI (Command Line Interface)
+    3) The website’s graphical starter interface
+
+Note:  to generate a project utilizing Gradle build tool, you can add --gradle flag.
+
+1) Quarkus Maven plugin
+If you maven installed use following:
+mvn io.quarkus.platform:quarkus-maven-plugin:3.5.0:create \
+    -DplatformVersion=3.5.0 \
+    -DprojectGroupId=org.acme \
+    -DprojectArtifactId=quarkus-maven-generated \
+    -Dextensions="resteasy-reactive"
+
+2) Quarkus CLI (Command Line Interface) - Using SDKMan
+First install SDKMan if not insatlled already:
+curl -s https://get.sdkman.io | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+sdk version
+echo $PATH
+
+https://quarkus.io/guides/cli-tooling
+sdk install quarkus
+quarkus --version
+quarkus --help
+
+quarkus create app -h
+quarkus create app -help
+quarkus create app org.acme:quarkus-cli-generated -P 3.5.0 --extension resteasy-reactive
+
+3) The website’s graphical starter interface
+https://code.quarkus.io
+select Java version (17, 21)
+
+4) generator also provides a REST API exposed at https://code.quarkus.io/api
+curl "https://code.quarkus.io/api/download?g=org.acme&a=quarkus-rest-generated&e=quarkus-resteasy-reactive" --output quarkus-in-action.zip
+
+Quarkus Resteasy reactive is now Quarkus Rest:
+https://quarkus.io/guides/rest-migration
+
 For CLI (Optional):
 https://quarkus.io/get-started/
 https://quarkus.io/guides/maven-tooling
@@ -11,8 +54,73 @@ https://quarkus.io/guides/hibernate-orm-panache
 $ quarkus create app org.acme:quarkus-in-action -P 3.5.0  --extension resteasy-reactive
  
 Quarkus dev mode:
+# Maven
+./mvnw quarkus:dev
+# CLI
 quarkus dev
-./mvnw compile quarkus:dev
+
+Quarkus PROD:
+# Maven
+./mvnw clean package
+# CLI
+quarkus build
+# Gradle
+./gradlew build
+
+# Below is not a fat JAR (also known as über JAR) and references externalized libraries/dependencies:
+# It's useful for Docker layers (src/main/docker/Dockerfile.jvm)
+java -jar target/quarkus-app/quarkus-run.jar
+
+# Native compilation with GraalVM:
+allows compiling of Java code ahead-of-time to a binary – a native executable. A native executable includes only the code required at run time, that is the application classes, standard-library classes, the language runtime, and statically-linked native code from the JDK. The ahead-of-time compilation refers to the process of compiling Java bytecode into system-specific machine instructions.
+
+Quarkus executes the native build inside the Docker container in two cases — either on user request (in that case, it needs to be explicitly specified by a configuration property -Dquarkus.native.container-build=true) or as a fallback in case it is not able to find a valid GraalVM environment (e.g., GRAALVM_HOME is not set).
+
+# Utilizing Maven profile
+$ ./mvnw package -Pnative
+# Gradle needs to use the system property directly
+$ ./gradlew build -Dquarkus.package.type=native
+# Or quarkus CLI for general approach
+$ quarkus build --native
+
+# Build Container Image:
+./mvnw package -Pnative 
+docker build -f src/main/docker/Dockerfile.native-micro -t quarkus/quarkus-gui-generated .
+docker run -i --rm -p 8080:8080 <docker-image>
+
+# Extensions
+./mvnw quarkus:help
+./mvnw quarkus:list-extensions
+
+# Live Reload
+
+# Profile
+By default, there are three configuration profiles:
+    prod — active when the application is running in production mode
+    dev — active when application runs in Dev mode
+    test — active during tests
+custom user profiles with quarkus.profile
+Profile specific proerty:
+%dev.quarkus.http.port=7777
+
+Quarkus provides two separate ways of overriding configuration dynamically - JVM system properties and environment variables.
+priority: system properties, environment variables, and only then application.properties
+$ GREETING="Environment variable value" ./mvnw quarkus:dev -Dgreeting="System property value"
+$ GREETING="Environment variable value" quarkus dev -Dgreeting="System property value"
+
+#DEV UI:
+
+#DEV Serices: Database, Broker
+Dev Services design allows them to only work in Dev mode and during tests.
+Dev Services generally require Docker (or Podman) to be available because they use containers to run the underlying services. There are some exceptions, for example, the H2 and Derby databases - these are run directly inside the JVM of your application.
+
+# Continuous Testing
+
+Database(Panache):
+Active record pattern
+
+
+---------------------Above is 2024--------------------------------
 
 I) My First Quarkus microservice (Developer Joy):
 	1) https://code.quarkus.io
