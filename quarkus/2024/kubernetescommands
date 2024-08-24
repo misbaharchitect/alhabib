@@ -1,0 +1,26 @@
+https://kubernetes.io/docs/tasks/tools/
+
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+minikube version
+minikube start
+minikube stop
+minikube delete
+eval $(minikube -p minikube docker-env)
+./mvnw quarkus:add-extension -Dextensions='container-image-jib'
+./mvnw quarkus:add-extension -Dextensions="kubernetes"
+./mvnw quarkus:add-extension -Dextensions="minikube"
+./mvnw clean package -Dquarkus.kubernetes.deploy=true -Dmaven.test.skip
+
+
+quarkus.http.port=8082
+
+quarkus.swagger-ui.always-include=true
+quarkus.swagger-ui.enable=true
+quarkus.application.name=client-service
+quarkus.container-image.group=quarkus-mp
+quarkus.container-image.name=client-service
+quarkus.kubernetes.name=client-service
+
+minikube service list
+docker images
