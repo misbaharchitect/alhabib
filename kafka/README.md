@@ -1,3 +1,5 @@
+docker exec -it -w /opt/kafka/bin <container-id> bash
+
 
 console-producer with key:
 
