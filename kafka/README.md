@@ -22,6 +22,7 @@ mynewtopic
 ./kafka-topics.sh --bootstrap-server localhost:9092 --describe
 
 For Docker people:
+
 docker run -p 9092:9092 --name broker apache/kafka:3.9.0
 docker ps
 docker exec -it -w /opt/kafka/bin <container-id> bash
