@@ -4,7 +4,8 @@ console-producer with key:
 ./kafka-console-producer.sh --bootstrap-server localhost:9092 --topic myfirsttopic --property parse.key=true --property key.separator=:
 
 console-consumer with consumer-group:
-./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic myfirsttopic --consumer-property group.id=a --property print.key=true --property key.separator=:
+
+./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic myfirsttopic --consumer-property group.id=a --property print.key=true --property key.separator=:
 
 
 Commom for all:
