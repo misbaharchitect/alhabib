@@ -1,0 +1,13 @@
+{"namespace": "org.example",
+ "type": "record",
+ "name": "Student",
+ "version": "1",
+ "fields": [
+     {"name": "name", "type": "string"},
+     {"name": "age", "type": ["null", "string"], "default": null},
+     {"name": "subjects", "type":
+                      {"type": "array", "items": "string"},
+      "default": []
+    }
+  ]
+}

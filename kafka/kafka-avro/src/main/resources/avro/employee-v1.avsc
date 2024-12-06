@@ -1,0 +1,12 @@
+{"namespace": "org.example",
+ "type": "record",
+ "name": "Employee",
+ "fields": [
+     {"name": "name", "type": "string"},
+     {"name": "age", "type": "string"},
+     {"name": "departments", "type":
+                      {"type": "array", "items": "string"},
+      "default": []
+    }
+  ]
+}
