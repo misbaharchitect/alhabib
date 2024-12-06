@@ -1,5 +1,6 @@
 Commom for all:
 ./bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
+
 Docker:
 ./kafka-topics.sh --bootstrap-server localhost:9092 --list
 
