@@ -41,21 +41,7 @@ $ bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/kraft/
 
 $ bin/kafka-server-start.sh config/kraft/reconfig-server.properties
 
-
-
-Zoom Meeting  Id: 
-Meeting ID: 863 6108 8102
-
-Passcode: 895248
-
-https://us06web.zoom.us/j/86361088102?pwd=ayhm6rEBtzhL1eqJufthgGuzWWVgJI.1
-
-
-LET ME KNOW WHEN PEOPLE ARE BACK
-
-
-
-
 Lunch Break:
 12:50 pm to 2:30 pm for Friday
+
 1 pm to 2 pm for Saturday
