@@ -1,33 +1,35 @@
 docker exec -it -w /opt/kafka/bin <container-id> bash
 
 
-console-producer with key:
+# console-producer with key:
 
 ./kafka-console-producer.sh --bootstrap-server localhost:9092 --topic myfirsttopic --property parse.key=true --property key.separator=:
 
-console-consumer with consumer-group:
+# console-consumer with consumer-group:
 
 ./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic myfirsttopic --consumer-property group.id=a --property print.key=true --property key.separator=:
 
 
-Commom for all:
+# Commom for all:
 ./bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
 
-Docker:
+# Docker:
 ./kafka-topics.sh --bootstrap-server localhost:9092 --list
 
-./kafka-topics.sh --bootstrap-server localhost:9092 --create --topic 
-mynewtopic
-
+# Non Docker new topic
+./kafka-topics.sh --bootstrap-server localhost:9092 --create --topic mynewtopic
+# Non Docker describe topic
 ./kafka-topics.sh --bootstrap-server localhost:9092 --describe
 
-For Docker people:
+# For Docker people:
 
 docker run -p 9092:9092 --name broker apache/kafka:3.9.0
+# see all docker process
 docker ps
+# Login to container
 docker exec -it -w /opt/kafka/bin <container-id> bash
 
-For Non-Docker people:
+# For Non-Docker people:
 
 $ tar -xzf kafka_2.13-3.9.0.tgz
 $ cd kafka_2.13-3.9.0
