@@ -58,6 +58,8 @@ Quarkus dev mode:
 ./mvnw quarkus:dev
 # CLI
 quarkus dev
+# Gradle
+./gradlew quarkusDev
 
 Quarkus PROD:
 # Maven
@@ -100,7 +102,7 @@ By default, there are three configuration profiles:
     dev — active when application runs in Dev mode
     test — active during tests
 custom user profiles with quarkus.profile
-Profile specific proerty:
+Profile specific property:
 %dev.quarkus.http.port=7777
 
 Quarkus provides two separate ways of overriding configuration dynamically - JVM system properties and environment variables.

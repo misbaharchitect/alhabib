@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="userms-client (2)" />
+        <module name="client-userms" />
+        <module name="userms (3) (com.example)" />
+        <module name="kafka-consumer" />
+        <module name="client-service (1)" />
+        <module name="config-client" />
+        <module name="eureka-server (1)" />
+        <module name="kafka-producer-1" />
+        <module name="service-keycloak" />
+        <module name="demo" />
+        <module name="eureka-server" />
+        <module name="service-keycloak-orig" />
+        <module name="usermswithdb" />
+        <module name="hotel-service" />
+        <module name="oauth-server" />
+        <module name="userms (2) (com.example)" />
+        <module name="userms-client" />
+        <module name="firstrestms" />
+        <module name="mongodbms" />
+        <module name="userms (1) (com.edureka)" />
+        <module name="userms" />
+        <module name="kafka-producer (1) (org.acme)" />
+        <module name="kafka-consumer-1 (1) (org.acme)" />
+        <module name="service-mongodb" />
+        <module name="code-with-quarkus" />
+        <module name="userms-client (1)" />
+        <module name="saga-orchestrator" />
+        <module name="userms (1) (com.example)" />
+        <module name="kafka-producer" />
+        <module name="kafka-stream-java" />
+        <module name="rest-client-orig" />
+        <module name="service-database" />
+        <module name="kafka-java" />
+        <module name="apigateway" />
+        <module name="config-server" />
+        <module name="kafka-consumer-2" />
+        <module name="kafka-consumer-1" />
+        <module name="kafka-avro" />
+        <module name="kafka-producer (1)" />
+        <module name="paymentms-oidc" />
+        <module name="airline-service" />
+        <module name="client-service" />
+        <module name="kafka-consumer (1) (org.acme)" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="airline-service" options="-parameters" />
+      <module name="apigateway" options="-parameters" />
+      <module name="client-service" options="-parameters" />
+      <module name="client-service (1)" options="-parameters" />
+      <module name="client-userms" options="-parameters" />
+      <module name="code-with-quarkus" options="-parameters" />
+      <module name="config-client" options="-parameters" />
+      <module name="config-server" options="-parameters" />
+      <module name="demo" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+      <module name="eureka-server (1)" options="-parameters" />
+      <module name="firstrestms" options="-parameters" />
+      <module name="hotel-service" options="-parameters" />
+      <module name="kafka-consumer" options="-parameters" />
+      <module name="kafka-consumer (1) (org.acme)" options="-parameters" />
+      <module name="kafka-consumer-1" options="-parameters" />
+      <module name="kafka-consumer-1 (1) (org.acme)" options="-parameters" />
+      <module name="kafka-consumer-2" options="-parameters" />
+      <module name="kafka-producer" options="-parameters" />
+      <module name="kafka-producer (1)" options="-parameters" />
+      <module name="kafka-producer (1) (org.acme)" options="-parameters" />
+      <module name="kafka-producer-1" options="-parameters" />
+      <module name="mongodbms" options="-parameters" />
+      <module name="oauth-server" options="-parameters" />
+      <module name="paymentms-oidc" options="-parameters" />
+      <module name="rest-client-orig" options="-parameters" />
+      <module name="saga-orchestrator" options="-parameters" />
+      <module name="service-database" options="-parameters" />
+      <module name="service-keycloak" options="-parameters" />
+      <module name="service-keycloak-orig" options="-parameters" />
+      <module name="service-mongodb" options="-parameters" />
+      <module name="spring-boot-soap-client" options="-parameters" />
+      <module name="spring-boot-soap-client.main" options="-parameters" />
+      <module name="spring-boot-soap-client.test" options="-parameters" />
+      <module name="userms" options="-parameters" />
+      <module name="userms (1) (com.edureka)" options="-parameters" />
+      <module name="userms (1) (com.example)" options="-parameters" />
+      <module name="userms (2) (com.example)" options="-parameters" />
+      <module name="userms (3) (com.example)" options="-parameters" />
+      <module name="userms-client" options="-parameters" />
+      <module name="userms-client (1)" options="-parameters" />
+      <module name="userms-client (2)" options="-parameters" />
+      <module name="usermswithdb" options="-parameters" />
+    </option>
+  </component>
+</project>

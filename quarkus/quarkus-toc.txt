@@ -1,0 +1,20 @@
+Total Duration: 24 hours
+
+Quarkus with Micropofile and Kubernetes:
+Prerequisites: Java-11, Docker, Kubernetes (Docker and minikube)
+
+1) Introdution - 2 hours
+  a) Quarkus
+  b) MicroProfile
+  c) Kubernetes
+2) Hello Quarkus (Develop your first Microservice with Quarkus)  - 2 hours
+3) Database Access(Panache, JPA, Active Record, Repository) - 2 hours
+4) REST client(CDI, Programmatic) - 2 hours
+5) Resiliency (Circuit Breaker, Bulkhead, Fallback, Timeouts, Retry) - 3 hours
+5) Observability (Jaeger, Metrics, Prometheus, Grafana) - 3 hours
+6) Security (OIDC, JWT, Keycloak) - 3 hours
+Additional Topics:
+7) Kafka with Smallrye - 3 hours
+8) Deployment - 1 hour (discuss strategies)
+9) Installation (requries Docker, Kubernetes, Java) - 2 hours
+10 - QnA - 1 hour

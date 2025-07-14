@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/kafka/mongodbms/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka/kafka-avro/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka/kafka-java/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka/springboot/kafka-producer/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka/springboot/kafka-consumer-1/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka/springboot/kafka-consumer-2/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka/kafka-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka/kafka-producer/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka/kafka-stream-java/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/2024/client-service/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/2024/service-mongodb/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/2024/kafka-consumer-1/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/2024/kafka-producer-1/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/2024/rest-client-orig/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/2024/service-database/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/2024/service-keycloak/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/2024/code-with-quarkus/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/2024/service-keycloak-orig/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/2024/client-service-minikube/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/userms/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/client-userms/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/kafka-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/kafka-producer/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/paymentms-oidc/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-microservice/demo/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-microservice/saga/hotel-service/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-microservice/saga/airline-service/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-microservice/saga/saga-orchestrator/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-microservice/userms/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-microservice/apigateway/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-microservice/oauth-server/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-microservice/usermswithdb/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-microservice/eureka-server/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-microservice/userms-client/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-microservice/userms_testing/userms/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-microservice/circuit-breaker/userms/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-microservice/circuit-breaker/userms-client/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-microservice/distributed-tracing/userms/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-microservice/distributed-tracing/userms-client/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-microservice/config-serverAndClient/config-client/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-microservice/config-serverAndClient/config-server/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-microservice/eureka-server-peeraware/eureka-server/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/2025/firstrestms/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/2025/firstrestms-postgresql/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

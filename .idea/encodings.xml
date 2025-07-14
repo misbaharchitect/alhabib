@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/kafka/kafka-avro/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kafka/kafka-avro/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kafka/kafka-consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kafka/kafka-java/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kafka/kafka-java/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kafka/kafka-producer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kafka/kafka-stream-java/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kafka/kafka-stream-java/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kafka/mongodbms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kafka/springboot/kafka-consumer-1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kafka/springboot/kafka-consumer-2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kafka/springboot/kafka-producer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/client-service-minikube/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/client-service-minikube/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/client-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/client-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/code-with-quarkus/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/code-with-quarkus/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/kafka-consumer-1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/kafka-consumer-1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/kafka-producer-1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/kafka-producer-1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/rest-client-orig/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/rest-client-orig/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/service-database/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/service-database/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/service-keycloak-orig/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/service-keycloak-orig/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/service-keycloak/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/service-keycloak/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/service-mongodb/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2024/service-mongodb/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2025/firstrestms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2025/firstrestms/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/client-userms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/client-userms/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/kafka-consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/kafka-consumer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/kafka-producer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/kafka-producer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/paymentms-oidc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/paymentms-oidc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/userms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/userms/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-microservice/apigateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-microservice/circuit-breaker/userms-client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-microservice/circuit-breaker/userms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-microservice/config-serverAndClient/config-client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-microservice/config-serverAndClient/config-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-microservice/demo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-microservice/distributed-tracing/userms-client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-microservice/distributed-tracing/userms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-microservice/eureka-server-peeraware/eureka-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-microservice/eureka-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-microservice/oauth-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-microservice/saga/airline-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-microservice/saga/hotel-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-microservice/saga/saga-orchestrator/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-microservice/userms-client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-microservice/userms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-microservice/userms_testing/userms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-microservice/usermswithdb/src/main/java" charset="UTF-8" />
+  </component>
+</project>
