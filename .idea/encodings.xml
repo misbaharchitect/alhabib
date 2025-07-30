@@ -33,6 +33,12 @@
     <file url="file://$PROJECT_DIR$/quarkus/2024/service-keycloak/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/quarkus/2024/service-mongodb/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/quarkus/2024/service-mongodb/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2025/first-restdata-postgresql/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2025/first-restdata-postgresql/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2025/firstrestms-mongodb/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2025/firstrestms-mongodb/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2025/firstrestms-postgresql/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2025/firstrestms-postgresql/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/quarkus/2025/firstrestms/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/quarkus/2025/firstrestms/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/quarkus/client-userms/src/main/java" charset="UTF-8" />

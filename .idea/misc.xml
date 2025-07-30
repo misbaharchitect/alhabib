@@ -48,6 +48,8 @@
         <option value="$PROJECT_DIR$/springboot-microservice/eureka-server-peeraware/eureka-server/pom.xml" />
         <option value="$PROJECT_DIR$/quarkus/2025/firstrestms/pom.xml" />
         <option value="$PROJECT_DIR$/quarkus/2025/firstrestms-postgresql/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/2025/first-restdata-postgresql/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/2025/firstrestms-mongodb/pom.xml" />
       </list>
     </option>
   </component>

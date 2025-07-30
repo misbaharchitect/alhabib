@@ -21,6 +21,7 @@
         <module name="usermswithdb" />
         <module name="hotel-service" />
         <module name="oauth-server" />
+        <module name="firstrestms-postgresql" />
         <module name="userms (2) (com.example)" />
         <module name="userms-client" />
         <module name="firstrestms" />
@@ -32,6 +33,7 @@
         <module name="service-mongodb" />
         <module name="code-with-quarkus" />
         <module name="userms-client (1)" />
+        <module name="first-restdata-postgresql" />
         <module name="saga-orchestrator" />
         <module name="userms (1) (com.example)" />
         <module name="kafka-producer" />
@@ -41,6 +43,7 @@
         <module name="kafka-java" />
         <module name="apigateway" />
         <module name="config-server" />
+        <module name="firstrestms-mongodb" />
         <module name="kafka-consumer-2" />
         <module name="kafka-consumer-1" />
         <module name="kafka-avro" />
@@ -65,7 +68,10 @@
       <module name="demo" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="eureka-server (1)" options="-parameters" />
+      <module name="first-restdata-postgresql" options="-parameters" />
       <module name="firstrestms" options="-parameters" />
+      <module name="firstrestms-mongodb" options="-parameters" />
+      <module name="firstrestms-postgresql" options="-parameters" />
       <module name="hotel-service" options="-parameters" />
       <module name="kafka-consumer" options="-parameters" />
       <module name="kafka-consumer (1) (org.acme)" options="-parameters" />
