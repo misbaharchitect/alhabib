@@ -16,5 +16,5 @@ Prerequisites: Java-11, Docker, Kubernetes (Docker and minikube)
 Additional Topics:
 7) Kafka with Smallrye - 3 hours
 8) Deployment - 1 hour (discuss strategies)
-9) Installation (requries Docker, Kubernetes, Java) - 2 hours
+9) Installation (requries Docker, Kubernetes(Minikube), Java) - 2 hours
 10 - QnA - 1 hour
