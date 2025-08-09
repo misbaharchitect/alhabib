@@ -39,6 +39,7 @@
         <module name="kafka-producer" />
         <module name="kafka-stream-java" />
         <module name="rest-client-orig" />
+        <module name="firstrest-clientms" />
         <module name="service-database" />
         <module name="kafka-java" />
         <module name="apigateway" />
@@ -69,6 +70,7 @@
       <module name="eureka-server" options="-parameters" />
       <module name="eureka-server (1)" options="-parameters" />
       <module name="first-restdata-postgresql" options="-parameters" />
+      <module name="firstrest-clientms" options="-parameters" />
       <module name="firstrestms" options="-parameters" />
       <module name="firstrestms-mongodb" options="-parameters" />
       <module name="firstrestms-postgresql" options="-parameters" />

@@ -23,7 +23,7 @@ public class EmployeeResource {
     @GET
     @Path("/{name}")
     public Response getOneEmployeeByName(@PathParam("name") String name) {
-        LOGGER.info("Getting all employees with name {}", name);
+        LOGGER.info("Getting one employee by name {}", name);
         Employee oneByName = Employee.findOneByName(name);
 
         if (Objects.isNull(oneByName)) {
@@ -58,9 +58,10 @@ public class EmployeeResource {
 
     @PUT
     @Transactional
-    public Response updateEmployeeByName(Employee employee) {
+    public Response updateEmployee(Employee employee) {
         LOGGER.info("Updating a employee with name {}", employee.name);
-        Employee oneByName = Employee.findById(employee.id);
+//        Employee oneByName = Employee.findById(employee.id);
+        Employee oneByName = Employee.findOneByName(employee.name);
         if (Objects.isNull(oneByName)) {
             LOGGER.error("No employees found with name {}", employee.name);
             Response.Status notFound = Response.Status.NOT_FOUND;

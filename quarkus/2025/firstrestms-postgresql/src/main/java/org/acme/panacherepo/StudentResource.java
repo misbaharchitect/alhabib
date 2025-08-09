@@ -8,11 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Path("/students")
 public class StudentResource {
@@ -67,15 +65,15 @@ public class StudentResource {
 
     @PUT
     @Transactional
-    public Response updateStudentByName(Student student) {
+    public Response updateStudent(Student student) {
         LOGGER.info("Updating a user with name {}", student.getName());
-        Student studentFound = studentRepo.findById(student.getId());
-        if (Objects.isNull(studentFound)) {
-            LOGGER.error("No students found ", student);
+        Optional<Student> studentFoundOpt = studentRepo.findOneByName(student.getName());
+        if (studentFoundOpt.isEmpty()) {
+            LOGGER.error("No students found {}", student);
             Response.Status notFound = Response.Status.NOT_FOUND;
             return Response.status(notFound).build();
         }
-
+        Student studentFound = studentFoundOpt.get();
         LOGGER.info("updating student");
         if (student.getName() != null) studentFound.setName(student.getName());
         if (student.getAge() > 0) studentFound.setAge(student.getAge());
