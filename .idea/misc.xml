@@ -51,6 +51,9 @@
         <option value="$PROJECT_DIR$/quarkus/2025/first-restdata-postgresql/pom.xml" />
         <option value="$PROJECT_DIR$/quarkus/2025/firstrestms-mongodb/pom.xml" />
         <option value="$PROJECT_DIR$/quarkus/2025/firstrest-clientms/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/2025/kafka-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/2025/kafka-consumer-2025/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus/2025/kafka-producer-2025/pom.xml" />
       </list>
     </option>
   </component>

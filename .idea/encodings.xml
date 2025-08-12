@@ -43,6 +43,10 @@
     <file url="file://$PROJECT_DIR$/quarkus/2025/firstrestms-postgresql/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/quarkus/2025/firstrestms/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/quarkus/2025/firstrestms/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2025/kafka-consumer-2025/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2025/kafka-consumer-2025/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2025/kafka-producer-2025/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus/2025/kafka-producer-2025/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/quarkus/client-userms/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/quarkus/client-userms/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/quarkus/kafka-consumer/src/main/java" charset="UTF-8" />

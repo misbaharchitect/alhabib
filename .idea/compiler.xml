@@ -6,16 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="userms-client (2)" />
         <module name="client-userms" />
-        <module name="userms (3) (com.example)" />
         <module name="kafka-consumer" />
         <module name="client-service (1)" />
-        <module name="config-client" />
         <module name="eureka-server (1)" />
         <module name="kafka-producer-1" />
-        <module name="service-keycloak" />
-        <module name="demo" />
         <module name="eureka-server" />
         <module name="service-keycloak-orig" />
         <module name="usermswithdb" />
@@ -24,37 +19,47 @@
         <module name="firstrestms-postgresql" />
         <module name="userms (2) (com.example)" />
         <module name="userms-client" />
-        <module name="firstrestms" />
-        <module name="mongodbms" />
-        <module name="userms (1) (com.edureka)" />
         <module name="userms" />
         <module name="kafka-producer (1) (org.acme)" />
         <module name="kafka-consumer-1 (1) (org.acme)" />
         <module name="service-mongodb" />
         <module name="code-with-quarkus" />
-        <module name="userms-client (1)" />
         <module name="first-restdata-postgresql" />
+        <module name="kafka-producer-2025" />
         <module name="saga-orchestrator" />
         <module name="userms (1) (com.example)" />
-        <module name="kafka-producer" />
         <module name="kafka-stream-java" />
         <module name="rest-client-orig" />
         <module name="firstrest-clientms" />
         <module name="service-database" />
         <module name="kafka-java" />
         <module name="apigateway" />
-        <module name="config-server" />
         <module name="firstrestms-mongodb" />
-        <module name="kafka-consumer-2" />
-        <module name="kafka-consumer-1" />
         <module name="kafka-avro" />
-        <module name="kafka-producer (1)" />
         <module name="paymentms-oidc" />
         <module name="airline-service" />
         <module name="client-service" />
         <module name="kafka-consumer (1) (org.acme)" />
+        <module name="userms-client (2)" />
+        <module name="userms (3) (com.example)" />
+        <module name="config-client" />
+        <module name="service-keycloak" />
+        <module name="demo" />
+        <module name="firstrestms" />
+        <module name="mongodbms" />
+        <module name="userms (1) (com.edureka)" />
+        <module name="kafka-consumer-2025" />
+        <module name="userms-client (1)" />
+        <module name="kafka-producer" />
+        <module name="config-server" />
+        <module name="kafka-consumer-2" />
+        <module name="kafka-consumer-1" />
+        <module name="kafka-producer (1)" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="kafka-consumer (2) (org.acme)" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -77,13 +82,16 @@
       <module name="hotel-service" options="-parameters" />
       <module name="kafka-consumer" options="-parameters" />
       <module name="kafka-consumer (1) (org.acme)" options="-parameters" />
+      <module name="kafka-consumer (2) (org.acme)" options="-parameters" />
       <module name="kafka-consumer-1" options="-parameters" />
       <module name="kafka-consumer-1 (1) (org.acme)" options="-parameters" />
       <module name="kafka-consumer-2" options="-parameters" />
+      <module name="kafka-consumer-2025" options="-parameters" />
       <module name="kafka-producer" options="-parameters" />
       <module name="kafka-producer (1)" options="-parameters" />
       <module name="kafka-producer (1) (org.acme)" options="-parameters" />
       <module name="kafka-producer-1" options="-parameters" />
+      <module name="kafka-producer-2025" options="-parameters" />
       <module name="mongodbms" options="-parameters" />
       <module name="oauth-server" options="-parameters" />
       <module name="paymentms-oidc" options="-parameters" />
