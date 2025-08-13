@@ -16,11 +16,11 @@ public class KafkaPublisherApi {
 
     @Inject
     @Channel("employees")
-    Emitter<Employee> emitterEmployee;
+    private Emitter<Employee> emitterEmployee;
 
     @Inject
     @Channel("students")
-    Emitter<Student> emitterStudent;
+    private Emitter<Student> emitterStudent;
 
     @GET
     @Path("/{message}")
