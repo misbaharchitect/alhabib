@@ -1,5 +1,6 @@
 package org.acme.panacherepo;
 
+import io.micrometer.core.annotation.Counted;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
@@ -46,6 +47,7 @@ public class StudentResource {
 
     @POST
     @Transactional
+    @Counted(value = "students", description = "Number of students added")
     public Response addStudent(Student student) {
         LOGGER.info("Adding a user with name {}", student.getName());
         studentRepo.persist(student);

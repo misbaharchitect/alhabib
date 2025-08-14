@@ -1,5 +1,6 @@
 package org.acme.activerecord;
 
+import io.micrometer.core.annotation.Counted;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
@@ -39,6 +40,7 @@ public class EmployeeResource {
 
     @POST
     @Transactional
+    @Counted(value = "employees", description = "Number of employees added")
     public Response addEmployee(Employee employee) {
         LOGGER.info("Adding a employee with name {}", employee.name);
         employee.persist();
