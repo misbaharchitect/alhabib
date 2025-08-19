@@ -29,6 +29,4 @@ public interface StudentRestClientProgrammatic {
 
     @PUT
     public Response updateStudentByName(Student student);
-/*    @PUT
-    public Response updateStudentByName(Student student)*/
 }
