@@ -183,6 +183,17 @@ http://localhost:8082/client/users-bh
 echo
 done
 
+count=0
+while (( count++ <= 100 )); do
+curl -i \
+-H "Content-Type: application/json" \
+-X PUT \
+-d '{  "name": "Alice",  "age": 0,  "dob": "2022-03-10",  "grade": 0}' \
+http://localhost:8081/students
+echo
+done
+
+
 IV) Jaeger
 	1) Add to your microservice:
 		./mvnw quarkus:add-extension -Dextensions="opentelemetry"
@@ -316,4 +327,5 @@ https://smallrye.io/smallrye-reactive-messaging/smallrye-reactive-messaging/3.4/
 
 You can add kafka extension in a generated project as below:
 quarkus ext add quarkus-smallrye-reactive-messaging
+
 
