@@ -16,8 +16,8 @@ public class MyUiPageOld {
     private final Template myPage;
     private final SecurityContext securityContext;
 
-    public MyUiPageOld(Template myui, SecurityContext securityContext) {
-        this.myPage = requireNonNull(myui, "page is required");
+    public MyUiPageOld(Template page2, SecurityContext securityContext) {
+        this.myPage = requireNonNull(page2, "page is required");
         this.securityContext = securityContext;
     }
 

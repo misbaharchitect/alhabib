@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Hello {name ?: "Qute"}</title>
+    <title>Hello {response ?: "Qute"}</title>
     <style>
         body {
             background-color: #000;
@@ -23,8 +23,10 @@
     </style>
 </head>
 <body>
-<h1>Hello <b>{name ?: "Qute"}</b></h1>
+<h1>Hello <b>{response ?: "Qute"}</b></h1>
 
-<p>Create your web page using Quarkus RESTEasy & Qute</p>
+<p>Page-Create your web page using Quarkus RESTEasy & Qute</p>
+
+<a href="/logout">Log out</a>
 </body>
 </html>

@@ -16,6 +16,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.temporal.ChronoUnit;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Path("/students")
 public class StudentClientResource {
@@ -80,8 +81,12 @@ public class StudentClientResource {
     @Timeout(100)
     @Fallback(fallbackMethod = "fallbackForTimeout")
     public Object updateStudentWithTimeout(@PathParam("timeout") String timeout, Student student) throws InterruptedException {
-        Log.info("timeout-Update students in firstrestms-postgresql");
-        if ("yes".equalsIgnoreCase(timeout)) TimeUnit.SECONDS.sleep(1);
+        LOGGER.info("timeout-Update students in firstrestms-postgresql");
+        if ("yes".equalsIgnoreCase(timeout)) {
+            LOGGER.info("Timeout-Update(Start Sleep) student by name {} from the REST client", student.getName());
+            TimeUnit.SECONDS.sleep(1);
+            LOGGER.info("Timeout-Update(End Sleep) student by name {} from the REST client", student.getName());
+        }
         LOGGER.info("Timeout-Update student by name {} from the REST client", student.getName());
         Response response = studentRestClient.updateStudentByName(student);
         
@@ -115,13 +120,26 @@ public class StudentClientResource {
     @Fallback(fallbackMethod = "fallbackForRetry",
             applyOn = { TimeoutException.class })
     public Object updateStudentWithRetry(@PathParam("timeout") String timeout, Student student) throws InterruptedException {
-        Log.info("retry-Update students in studentms");
-        if ("yes".equalsIgnoreCase(timeout)) TimeUnit.SECONDS.sleep(1);
+        LOGGER.info("retry-Update students in studentms");
+        LOGGER.info("count {}", ai.get());
+        if (ai.get() > 0) {
+            ai.incrementAndGet();
+            LOGGER.info("count {}", ai.get());
+            timeout = "no";
+        }
+        if ("yes".equalsIgnoreCase(timeout)) {
+            ai.incrementAndGet();
+            LOGGER.info("Timeout-Update(Start Sleep) student by name {} from the REST client", student.getName());
+            TimeUnit.SECONDS.sleep(1);
+            LOGGER.info("Timeout-Update(End Sleep) student by name {} from the REST client", student.getName());
+        }
         LOGGER.info("Retry-Update student by name {} from the REST client", student.getName());
         Response response = studentRestClient.updateStudentByName(student);
-
+        ai.set(0);
         return response;
     }
+
+    AtomicInteger ai = new AtomicInteger(0);
     private Object fallbackForRetry(String timeout, Student student) {
         Log.info("FALLBACK: fallbackForRetry");
         return Response.status(Response.Status.GATEWAY_TIMEOUT).entity("{\"error\": \"retry-invoked\"}").build();
