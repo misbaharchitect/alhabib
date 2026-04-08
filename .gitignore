@@ -41,6 +41,8 @@ nb-configuration.xml
 .env
 
 # Plugin directory
-/.quarkus/cli/plugins/
+.quarkus/
 # TLS Certificates
 .certs/
+springboot-microservice/soap-working/spring-boot-soap-producer/.gradle/
+springboot-microservice/soap-working/spring-boot-soap-producer/build/
