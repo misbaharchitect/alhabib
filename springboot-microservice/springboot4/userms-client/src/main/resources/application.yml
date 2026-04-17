@@ -7,6 +7,7 @@ spring:
       http-services:
         enabled: true # Enables the native adapter integration
 
+
 server:
   port: 8082
 
@@ -37,15 +38,37 @@ management:
     health:
       show-details: always
 
+#resilience4j:
+#  circuitbreaker:
+#    configs:
+#      instances:
+#        usermsclient:
+#          slidingWindowType: COUNT_BASED
+#          failureRateThreshold: 50
+#          slidingWindowSize: 10
+#          waitDurationInOpenState: 20s
+#          permittedNumberOfCallsInHalfOpenState: 3
+#          minimumNumberOfCalls: 5
+
+
 resilience4j:
   circuitbreaker:
     configs:
-      instances:
-        usermsclient:
-          slidingWindowType: COUNT_BASED
-          failureRateThreshold: 50
-          slidingWindowSize: 10
-          waitDurationInOpenState: 20s
-          permittedNumberOfCallsInHalfOpenState: 3
-          minimumNumberOfCalls: 5
+      default:
+        slidingWindowType: COUNT_BASED
+        failureRateThreshold: 50
+        slidingWindowSize: 10
+        waitDurationInOpenState: 20s
+        permittedNumberOfCallsInHalfOpenState: 3
+        minimumNumberOfCalls: 5
 
+
+#resilience4j:
+#  circuitbreaker:
+#    instances:
+#      # Defaults to the interface name if not customized
+#      UserClientInterface:
+#        slidingWindowSize: 10
+#        failureRateThreshold: 50
+#        waitDurationInOpenState: 15s
+#        registerHealthIndicator: true

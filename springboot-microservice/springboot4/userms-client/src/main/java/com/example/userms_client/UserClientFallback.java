@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 public class UserClientFallback implements UserClientInterface {
 
     @Override
-    public Object getUsers() {
+    public Object getUsers(Long id) {
         return "Sending from Native fallback";
     }
 }

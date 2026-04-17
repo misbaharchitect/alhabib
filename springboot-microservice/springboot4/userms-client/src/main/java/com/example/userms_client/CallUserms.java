@@ -29,7 +29,7 @@ public class CallUserms {
 
     @GetMapping("/native")
     public Object getNative() {
-        return uci.getUsers();
+        return uci.getUsers(101l);
     }
     @GetMapping
 //    @CircuitBreaker(name = "usermsclient", fallbackMethod = "usermsfallback")
