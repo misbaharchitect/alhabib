@@ -51,16 +51,16 @@ management:
 #          minimumNumberOfCalls: 5
 
 
-resilience4j:
-  circuitbreaker:
-    configs:
-      default:
-        slidingWindowType: COUNT_BASED
-        failureRateThreshold: 50
-        slidingWindowSize: 10
-        waitDurationInOpenState: 20s
-        permittedNumberOfCallsInHalfOpenState: 3
-        minimumNumberOfCalls: 5
+#resilience4j:
+#  circuitbreaker:
+#    configs:
+#      default:
+#        slidingWindowType: COUNT_BASED
+#        failureRateThreshold: 50
+#        slidingWindowSize: 10
+#        waitDurationInOpenState: 20s
+#        permittedNumberOfCallsInHalfOpenState: 3
+#        minimumNumberOfCalls: 5
 
 
 #resilience4j:
@@ -72,3 +72,26 @@ resilience4j:
 #        failureRateThreshold: 50
 #        waitDurationInOpenState: 15s
 #        registerHealthIndicator: true
+
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      usermsclient:
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 10
+        minimum-number-of-calls: 5
+        failure-rate-threshold: 50
+        permitted-number-of-calls-in-half-open-state: 3
+        wait-duration-in-open-state: 10s
+        automatic-transition-from-open-to-half-open-enabled: true
+#        slow-call-rate-threshold: 100
+#        slow-call-duration-threshold: 5s
+      helloService:
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 10
+        minimum-number-of-calls: 5
+        failure-rate-threshold: 50
+        permitted-number-of-calls-in-half-open-state: 3
+        wait-duration-in-open-state: 15s
+        automatic-transition-from-open-to-half-open-enabled: true

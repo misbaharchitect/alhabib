@@ -1,53 +1,33 @@
 package com.example.userms_client;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestClient;
-import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class HttpConfig {
 
-    /**
-     * Regular RestTemplate - NOT load balanced
-     * Used for standard HTTP calls and infrastructure (Eureka, Config Server, etc.)
-     * Should NOT be used for microservice-to-microservice calls
-     */
-//    @Bean
-//    @LoadBalanced
-//    public RestTemplate getRestTemplate() {
-//        return new RestTemplate();
-//    }
-
     @Bean
-    @Primary
-    public RestClient.Builder directRestClientBuilder() {
-        return RestClient.builder();
-    }
-
-    @Bean
-    public RestClient directRestClient(
-            @Qualifier("directRestClientBuilder") RestClient.Builder builder) {
-        return builder.build();
+    public SimpleClientHttpRequestFactory clientHttpRequestFactory() {
+        SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
+        factory.setConnectTimeout(2000); // 2 seconds
+        factory.setReadTimeout(5000); // 5 seconds
+        return factory;
     }
 
     @Bean
     @LoadBalanced
-    public RestClient.Builder lbRestClientBuilder() {
-        return RestClient.builder();
+    public RestClient.Builder loadBalancedRestClientBuilder() {
+        return RestClient.builder().requestFactory(clientHttpRequestFactory());
     }
 
     @Bean
     @Primary
-    public RestClient serviceRestClient(
-            @Qualifier("lbRestClientBuilder") RestClient.Builder builder) {
-        return builder.baseUrl("http://userms").build();
+    public RestClient.Builder restClientBuilder() {
+        return RestClient.builder().requestFactory(clientHttpRequestFactory());
     }
-
-
-
 
 }
