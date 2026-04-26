@@ -1,0 +1,2 @@
+insert into car_data (id, CARTYPE, CARDAYSAVAILABLE) values ('3fa85f64-5717-4562-b3fc-2c963f66a000', 'Sedan', 2);
+insert into car_data (id, CARTYPE, CARDAYSAVAILABLE) values ('3fa85f64-5717-4562-b3fc-2c963f66a111', 'SUV', 2);

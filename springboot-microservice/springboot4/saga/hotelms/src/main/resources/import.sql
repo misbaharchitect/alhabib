@@ -1,0 +1,2 @@
+insert into hotel_data (id, hotelName, numberOfRoomsAvailable) values ('3fa85f64-5717-4562-b3fc-2c963f66a000', 'Taj', 3);
+insert into hotel_data (id, hotelName, numberOfRoomsAvailable) values ('3fa85f64-5717-4562-b3fc-2c963f66a111', 'Sheraton', 3);
