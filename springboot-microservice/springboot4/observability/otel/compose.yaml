@@ -1,0 +1,8 @@
+services:
+  grafana-lgtm:
+    # lgtm: Loki(logs aggregation), Grafana(visualizatin and dashboads), Tempo(distributed tracing), Mimir (long-term storage for Prometheus metrics)
+    image: 'grafana/otel-lgtm:latest'
+    ports:
+      - '3000:3000'
+      - '4317:4317'
+      - '4318:4318'
