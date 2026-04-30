@@ -1,4 +1,3 @@
-*.zip
 #Maven
 target/
 pom.xml.tag
@@ -18,7 +17,6 @@ bin/
 *.ipr
 *.iml
 *.iws
-.idea/
 
 # NetBeans
 nb-configuration.xml
@@ -42,8 +40,4 @@ nb-configuration.xml
 .env
 
 # Plugin directory
-.quarkus/
-# TLS Certificates
-.certs/
-springboot-microservice/soap-working/spring-boot-soap-producer/.gradle/
-springboot-microservice/soap-working/spring-boot-soap-producer/build/
+/.quarkus/cli/plugins/

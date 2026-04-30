@@ -13,9 +13,9 @@ import java.util.Map;
 public class StudentService {
     private static final Logger LOGGER = LoggerFactory.getLogger(StudentService.class);
 
-    private final static Map<Long, Student> students = new HashMap<>() {
+    private final static Map<Long, StudentV2> students = new HashMap<>() {
         {
-            put(1L, new Student() {{
+            put(1L, new StudentV2() {{
                 setId(1L);
                 setName("John Doe");
                 setEmail("john@example.com");
@@ -23,47 +23,47 @@ public class StudentService {
         }
     };
 
-    public Collection<Student> getStudents() {
+    public Collection<StudentV2> getStudents() {
         LOGGER.info("Getting students");
         return students.values();
     }
 
-    public Student getStudentById(Long id) {
+    public StudentV2 getStudentById(Long id) {
         LOGGER.info("Getting one student by Id {}", id);
         return students.get(id);
     }
 
-    public Student addStudent(Student student) {
-        LOGGER.info("Adding student {}", student);
-        if (students.get(student.getId()) != null) {
-            LOGGER.error("Student with ID {} already exists", student.getId());
+    public StudentV2 addStudent(StudentV2 studentV2) {
+        LOGGER.info("Adding student {}", studentV2);
+        if (students.get(studentV2.getId()) != null) {
+            LOGGER.error("Student with ID {} already exists", studentV2.getId());
             return null;
         }
 
-        students.put(student.getId(), student);
-        LOGGER.info("Student added with id {}", student.getId());
-        return student;
+        students.put(studentV2.getId(), studentV2);
+        LOGGER.info("Student added with id {}", studentV2.getId());
+        return studentV2;
     }
 
-    public List<Student> getStudentByName(String name) {
+    public List<StudentV2> getStudentByName(String name) {
         LOGGER.info("Getting list of students by name {}", name);
-        List<Student> studentsWithProvidedName = students.values().stream()
+        List<StudentV2> studentsWithProvidedName = students.values().stream()
                 .filter(s -> s.getName().equalsIgnoreCase(name)).toList();
 
         LOGGER.info("Found {} students by name {}", studentsWithProvidedName.size(), name);
         return studentsWithProvidedName;
     }
 
-        public Student updateStudent(Student student) {
-            LOGGER.info("Updating student {}", student.getName());
-            if (students.get(student.getId()) == null) {
-                LOGGER.error("Student with ID {} does not exist", student.getId());
+        public StudentV2 updateStudent(StudentV2 studentV2) {
+            LOGGER.info("Updating student {}", studentV2.getName());
+            if (students.get(studentV2.getId()) == null) {
+                LOGGER.error("Student with ID {} does not exist", studentV2.getId());
                 return null;
             }
 
-            students.put(student.getId(), student);
-            LOGGER.info("Student updated with id {}", student.getId());
-            return student;
+            students.put(studentV2.getId(), studentV2);
+            LOGGER.info("Student updated with id {}", studentV2.getId());
+            return studentV2;
         }
 
         public boolean deleteStudent(Long id) {

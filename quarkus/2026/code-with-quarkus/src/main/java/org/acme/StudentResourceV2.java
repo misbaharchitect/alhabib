@@ -9,13 +9,13 @@ import org.slf4j.LoggerFactory;
 import java.net.URI;
 import java.util.Collection;
 
-@Path("/students")
-public class StudentResource {
+@Path("/students/v2")
+public class StudentResourceV2 {
     private static final Logger LOGGER = LoggerFactory.getLogger(StudentService.class);
 
     private final StudentService studentService;
 
-    public StudentResource(StudentService studentService) {
+    public StudentResourceV2(StudentService studentService) {
         this.studentService = studentService;
     }
 
@@ -23,9 +23,9 @@ public class StudentResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getStudents() {
         LOGGER.info("Getting students");
-        Collection<Student> students = studentService.getStudents();
-        LOGGER.info("Found {} students", students.size());
-        return Response.ok(students).build();
+        Collection<StudentV2> studentV2s = studentService.getStudents();
+        LOGGER.info("Found {} students", studentV2s.size());
+        return Response.ok(studentV2s).build();
     }
 
     @GET
@@ -33,42 +33,42 @@ public class StudentResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getStudentById(@PathParam("id") Long id) {
         LOGGER.info("Getting student by id {}", id);
-        Student studentById = studentService.getStudentById(id);
-        if (studentById == null) {
+        StudentV2 studentV2ById = studentService.getStudentById(id);
+        if (studentV2ById == null) {
             LOGGER.error("Student with id {} not found", id);
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         LOGGER.info("Found student with id {}", id);
-        return Response.ok(studentById).build();
+        return Response.ok(studentV2ById).build();
     }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addStudent(Student student) {
-        LOGGER.info("Adding student with name {}", student.getName());
-        Student addedStudent = studentService.addStudent(student);
-        if (addedStudent == null) {
-            LOGGER.error("Failed to add student with name {}", student.getName());
+    public Response addStudent(StudentV2 studentV2) {
+        LOGGER.info("Adding student with name {}", studentV2.getName());
+        StudentV2 addedStudentV2 = studentService.addStudent(studentV2);
+        if (addedStudentV2 == null) {
+            LOGGER.error("Failed to add student with name {}", studentV2.getName());
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
-        LOGGER.info("Student added with id {}", addedStudent.getId());
-        return Response.created(URI.create("/students/" + addedStudent.getId())).build();
+        LOGGER.info("Student added with id {}", addedStudentV2.getId());
+        return Response.created(URI.create("/students/" + addedStudentV2.getId())).build();
     }
 
     @PUT
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response updateStudent(@PathParam("id") Long id, Student student) {
+    public Response updateStudent(@PathParam("id") Long id, StudentV2 studentV2) {
         LOGGER.info("Updating student with id {}", id);
-        Student updatedStudent = studentService.updateStudent(student);
-        if (updatedStudent == null) {
+        StudentV2 updatedStudentV2 = studentService.updateStudent(studentV2);
+        if (updatedStudentV2 == null) {
             LOGGER.error("Student does not exist with id {}", id);
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
-        LOGGER.info("Student updated with id {}", updatedStudent.getId());
-        return Response.ok(updatedStudent).build();
+        LOGGER.info("Student updated with id {}", updatedStudentV2.getId());
+        return Response.ok(updatedStudentV2).build();
     }
 
     @DELETE

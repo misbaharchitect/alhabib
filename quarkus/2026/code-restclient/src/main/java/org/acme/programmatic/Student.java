@@ -1,4 +1,4 @@
-package org.acme;
+package org.acme.programmatic;
 
 import java.time.LocalDate;
 
@@ -8,13 +8,6 @@ public class Student {
     private int age;
     private LocalDate dob;
     private int grade;
-
-    public Student(String name, int age, LocalDate dob, int grade) {
-        this.name = name;
-        this.age = age;
-        this.dob = dob;
-        this.grade = grade;
-    }
 
     public String getName() {
         return name;

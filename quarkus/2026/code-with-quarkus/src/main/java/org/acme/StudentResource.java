@@ -1,89 +1,95 @@
 package org.acme;
 
 import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.net.URI;
-import java.util.Collection;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Path("/students")
 public class StudentResource {
-    private static final Logger LOGGER = LoggerFactory.getLogger(StudentService.class);
-
-    private final StudentService studentService;
-
-    public StudentResource(StudentService studentService) {
-        this.studentService = studentService;
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getStudents() {
-        LOGGER.info("Getting students");
-        Collection<Student> students = studentService.getStudents();
-        LOGGER.info("Found {} students", students.size());
-        return Response.ok(students).build();
-    }
-
-    @GET
-    @Path("/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getStudentById(@PathParam("id") Long id) {
-        LOGGER.info("Getting student by id {}", id);
-        Student studentById = studentService.getStudentById(id);
-        if (studentById == null) {
-            LOGGER.error("Student with id {} not found", id);
-            return Response.status(Response.Status.NOT_FOUND).build();
+    private static final Logger LOGGER = LoggerFactory.getLogger(StudentResource.class);
+    private static final List<Student> STUDENTS = new ArrayList<>() {
+        {
+            add(new Student("John", 25, LocalDate.of(2000, 1, 1), 6));
+            add(new Student("Jane", 27, LocalDate.of(1998, 1, 1), 8));
         }
-        LOGGER.info("Found student with id {}", id);
-        return Response.ok(studentById).build();
+    };
+
+    @GET
+    public List<Student> getAllStudents() {
+        LOGGER.info("Getting all users");
+        return STUDENTS;
+    }
+
+    @GET
+    @Path("/{name}")
+    public Response getStudentsByName(@PathParam("name") String name) {
+        LOGGER.info("Getting all users with name {}", name);
+        List<Student> studentsFound = STUDENTS.stream().filter(s -> s.getName().equalsIgnoreCase(name)).collect(Collectors.toList());
+
+        if (studentsFound.isEmpty()) {
+            LOGGER.error("No students found with name {}", name);
+            Response.Status notFound = Response.Status.NOT_FOUND;
+            return Response.status(notFound).build();
+        }
+
+        LOGGER.info("studentsFound {}", studentsFound);
+
+        return Response.ok(studentsFound).build();
     }
 
     @POST
-    @Produces(MediaType.APPLICATION_JSON)
     public Response addStudent(Student student) {
-        LOGGER.info("Adding student with name {}", student.getName());
-        Student addedStudent = studentService.addStudent(student);
-        if (addedStudent == null) {
-            LOGGER.error("Failed to add student with name {}", student.getName());
-            return Response.status(Response.Status.BAD_REQUEST).build();
-        }
+        LOGGER.info("Adding a user with name {}", student.getName());
+        STUDENTS.add(student);
+        LOGGER.info("student added");
 
-        LOGGER.info("Student added with id {}", addedStudent.getId());
-        return Response.created(URI.create("/students/" + addedStudent.getId())).build();
-    }
-
-    @PUT
-    @Path("/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response updateStudent(@PathParam("id") Long id, Student student) {
-        LOGGER.info("Updating student with id {}", id);
-        Student updatedStudent = studentService.updateStudent(student);
-        if (updatedStudent == null) {
-            LOGGER.error("Student does not exist with id {}", id);
-            return Response.status(Response.Status.BAD_REQUEST).build();
-        }
-
-        LOGGER.info("Student updated with id {}", updatedStudent.getId());
-        return Response.ok(updatedStudent).build();
+        return Response.created(URI.create(student.getName())).build();
     }
 
     @DELETE
-    @Path("/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response deleteStudent(@PathParam("id") Long id) {
-        LOGGER.info("Deleting student with id {}", id);
-        boolean isDeleted = studentService.deleteStudent(id);
-        if (!isDeleted) {
-            LOGGER.error("Student does not exist with id {}", id);
-            return Response.status(Response.Status.BAD_REQUEST).build();
+    @Path("/{name}")
+    public Response deleteStudent(@PathParam("name") String name) {
+        LOGGER.info("Deleting a user with name {}", name);
+        boolean areUsersRemoved = STUDENTS.removeIf(s -> s.getName().equalsIgnoreCase(name));
+
+        if (!areUsersRemoved) {
+            LOGGER.error("No students found with name {}", name);
+            Response.Status notFound = Response.Status.NOT_FOUND;
+            return Response.status(notFound).build();
         }
 
-        LOGGER.info("Student deleted with id {}", id);
-        return Response.noContent().build();
+        LOGGER.info("new students list after removal {}", STUDENTS);
+
+        return Response.ok().build();
     }
 
+    @PUT
+    public Response updateStudentByName(Student student) {
+        LOGGER.info("Updating a user with name {}", student.getName());
+        Optional<Student> studentFound = STUDENTS.stream().filter(s -> s.getName().equalsIgnoreCase(student.getName())).findAny();
+        if (studentFound.isEmpty()) {
+            LOGGER.error("No students found with name {}", student.getName());
+            Response.Status notFound = Response.Status.NOT_FOUND;
+            return Response.status(notFound).build();
+        }
+
+        Student studentUpdated = studentFound.map(s -> {
+            LOGGER.info("updating student");
+            if (student.getAge() > 0) s.setAge(student.getAge());
+            if (student.getDob() != null) s.setDob(student.getDob());
+            if (student.getGrade() > 0) s.setGrade(student.getGrade());
+            return s;
+        }).get();
+        LOGGER.info("student updated");
+
+        return Response.ok(studentUpdated).build();
+    }
 }
