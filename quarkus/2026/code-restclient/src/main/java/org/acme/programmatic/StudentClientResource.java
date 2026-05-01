@@ -65,8 +65,8 @@ public class StudentClientResource {
     }
 
     @PUT
-//    @Bulkhead(1)
-//    @Fallback(fallbackMethod = "updateStudentBulkheadFallback", applyOn = { BulkheadException.class })
+    @Bulkhead(1)
+    @Fallback(fallbackMethod = "updateStudentBulkheadFallback", applyOn = { BulkheadException.class })
     public Response updateStudentByName(Student student) {
         LOGGER.info("Update student by name {} from the REST client", student.getName());
         Response response = studentRestClient.updateStudentByName(student);
@@ -84,126 +84,126 @@ public class StudentClientResource {
                 .build();
     }
 
-//    @PUT
-//    @Path("timeout/{timeout}")
-//    @Timeout(100)
-//    @Fallback(fallbackMethod = "fallbackForTimeout")
-//    public Object updateStudentWithTimeout(@PathParam("timeout") String timeout, Student student) throws InterruptedException {
-//        LOGGER.info("timeout-Update students in firstrestms-postgresql");
-//        if ("yes".equalsIgnoreCase(timeout)) {
-//            LOGGER.info("Timeout-Update(Start Sleep) student by name {} from the REST client", student.getName());
-//            TimeUnit.SECONDS.sleep(1);
-//            LOGGER.info("Timeout-Update(End Sleep) student by name {} from the REST client", student.getName());
-//        }
-//        LOGGER.info("Timeout-Update student by name {} from the REST client", student.getName());
-//        Response response = studentRestClient.updateStudentByName(student);
-//
-//        return response;
-//    }
-//    private Object fallbackForTimeout(String timeout, Student student) {
-//        Log.info("FALLBACK: fallbackForTimeout");
-//        return Response.status(Response.Status.GATEWAY_TIMEOUT).entity("{\"error\": \"timout-invoked\"}").build();
-//    }
-//
-//    /**
-//     * delay: Delay between each retry (ChronoUnit.MILLIS)
-//     * jitter: Adds or subtracts a random amount of time between each retry. For example, a
-//     *         delay of 100ms with a jitter of 20ms results in a delay between 80m and 120ms
-//     * Use the Retry resilience strategy with caution. Retrying a remote call on an
-//     * overloaded backend service with a small delay exacerbates the problem.
-//     *
-//     * "@Retry" annotation can be used together with @Bulkhead, @CircuitBreaker, @Fallback, and @Timeout
-//     *
-//     * @param timeout
-//     * @return
-//     * @throws InterruptedException
-//     */
-//    @PUT
-//    @Path("retry/{timeout}")
-//    @Timeout(100)
-//    @Retry(delay = 3000,
-//            jitter = 25,
-//            maxRetries = 2,
-//            retryOn = TimeoutException.class)
-//    @Fallback(fallbackMethod = "fallbackForRetry",
-//            applyOn = { TimeoutException.class })
-//    public Object updateStudentWithRetry(@PathParam("timeout") String timeout, Student student) throws InterruptedException {
-//        LOGGER.info("retry-Update students in studentms");
-//        LOGGER.info("count {}", ai.get());
-//        if (ai.get() > 0) {
-//            ai.incrementAndGet();
-//            LOGGER.info("count {}", ai.get());
-//            timeout = "no";
-//        }
-//        if ("yes".equalsIgnoreCase(timeout)) {
-//            ai.incrementAndGet();
-//            LOGGER.info("Timeout-Update(Start Sleep) student by name {} from the REST client", student.getName());
-//            TimeUnit.SECONDS.sleep(1);
-//            LOGGER.info("Timeout-Update(End Sleep) student by name {} from the REST client", student.getName());
-//        }
-//        LOGGER.info("Retry-Update student by name {} from the REST client", student.getName());
-//        Response response = studentRestClient.updateStudentByName(student);
-//        ai.set(0);
-//        return response;
-//    }
-//
-//    AtomicInteger ai = new AtomicInteger(0);
-//    private Object fallbackForRetry(String timeout, Student student) {
-//        Log.info("FALLBACK: fallbackForRetry");
-//        return Response.status(Response.Status.GATEWAY_TIMEOUT).entity("{\"error\": \"retry-invoked\"}").build();
-//    }
-//
-//    /**
-//     * requestVolumeThreshold(20): The size of the rolling window (number of requests) used to calculate
-//     * the opening of a circuit
-//     *
-//     * failureRatio(0.5): Open the circuit if the ratio of failed requests within the
-//     * requestVolumeThreshold window exceeds this number. For example,
-//     * if the requestVolumeThreshold is 4, then two failed requests of the
-//     * last four will open the circuit
-//     *
-//     * delay(5000ms): The amount of time the circuit remains open before allowing a request
-//     *
-//     * delayUnit(ChronoUnit.MILLIS): Time unit of the delay parameter
-//     *
-//     * successThreshold(1): The number of successful trial requests to close the circuit
-//     *
-//     * failOn(Any exception): List of exceptions which should be considered failures
-//     *
-//     * skipOn(None): List of exceptions that should not open the circuit. This list takes
-//     * precedence over the types listed in the failOn parameter
-//     *
-//     * The @CircuitBreaker annotation can be used together with @Timeout, @Fallback, @Bulkhead, and @Retry.
-//     *
-//     * @return
-//     */
-//    @PUT
-//    @Path("circuitbreaker/{cb}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @CircuitBreaker(
-//            requestVolumeThreshold=3,
-//            failureRatio=.66,
-//            delay = 10,
-//            delayUnit = ChronoUnit.SECONDS,
-//            successThreshold=2
-//    )
-//    @Fallback(fallbackMethod = "fallbackOfStudentsCircuitBreaker")
-//    public Object updateStudentWithCircuitBreaker(@PathParam("cb") String cb, Student student) {
-//        Log.info("Watch CircuitBreaker");
-//        if ("yes".equalsIgnoreCase(cb)) {
-//            Log.error("Throwing RuntimeException to trigger CircuitBreaker");
-//            throw new RuntimeException("updateStudent call failed");
-//        }
-//        LOGGER.info("CircuitBreaker-Update student by name {} from the REST client", student.getName());
-//        Response response = studentRestClient.updateStudentByName(student);
-//
-//        return response;
-//    }
-//
-//    private Object fallbackOfStudentsCircuitBreaker(String cb, Student student) {
-//        Log.info("FALLBACK: Starting fallbackOfStudentsCircuitBreaker");
-//        return Response.status(Response.Status.OK).entity("{\"error\": \"circuitbreaker-invoked\"}").build();
-//    }
+    @PUT
+    @Path("timeout/{timeout}")
+    @Timeout(100)
+    @Fallback(fallbackMethod = "fallbackForTimeout")
+    public Object updateStudentWithTimeout(@PathParam("timeout") String timeout, Student student) throws InterruptedException {
+        LOGGER.info("timeout-Update students in firstrestms-postgresql");
+        if ("yes".equalsIgnoreCase(timeout)) {
+            LOGGER.info("Timeout-Update(Start Sleep) student by name {} from the REST client", student.getName());
+            TimeUnit.SECONDS.sleep(1);
+            LOGGER.info("Timeout-Update(End Sleep) student by name {} from the REST client", student.getName());
+        }
+        LOGGER.info("Timeout-Update student by name {} from the REST client", student.getName());
+        Response response = studentRestClient.updateStudentByName(student);
+
+        return response;
+    }
+    private Object fallbackForTimeout(String timeout, Student student) {
+        Log.info("FALLBACK: fallbackForTimeout");
+        return Response.status(Response.Status.GATEWAY_TIMEOUT).entity("{\"error\": \"timout-invoked\"}").build();
+    }
+
+    /**
+     * delay: Delay between each retry (ChronoUnit.MILLIS)
+     * jitter: Adds or subtracts a random amount of time between each retry. For example, a
+     *         delay of 100ms with a jitter of 20ms results in a delay between 80m and 120ms
+     * Use the Retry resilience strategy with caution. Retrying a remote call on an
+     * overloaded backend service with a small delay exacerbates the problem.
+     *
+     * "@Retry" annotation can be used together with @Bulkhead, @CircuitBreaker, @Fallback, and @Timeout
+     *
+     * @param timeout
+     * @return
+     * @throws InterruptedException
+     */
+    @PUT
+    @Path("retry/{timeout}")
+    @Timeout(100)
+    @Retry(delay = 3000,
+            jitter = 25,
+            maxRetries = 2,
+            retryOn = TimeoutException.class)
+    @Fallback(fallbackMethod = "fallbackForRetry",
+            applyOn = { TimeoutException.class })
+    public Object updateStudentWithRetry(@PathParam("timeout") String timeout, Student student) throws InterruptedException {
+        LOGGER.info("retry-Update students in studentms");
+        LOGGER.info("count {}", ai.get());
+        if (ai.get() > 0) {
+            ai.incrementAndGet();
+            LOGGER.info("count {}", ai.get());
+            timeout = "no";
+        }
+        if ("yes".equalsIgnoreCase(timeout)) {
+            ai.incrementAndGet();
+            LOGGER.info("Timeout-Update(Start Sleep) student by name {} from the REST client", student.getName());
+            TimeUnit.SECONDS.sleep(1);
+            LOGGER.info("Timeout-Update(End Sleep) student by name {} from the REST client", student.getName());
+        }
+        LOGGER.info("Retry-Update student by name {} from the REST client", student.getName());
+        Response response = studentRestClient.updateStudentByName(student);
+        ai.set(0);
+        return response;
+    }
+
+    AtomicInteger ai = new AtomicInteger(0);
+    private Object fallbackForRetry(String timeout, Student student) {
+        Log.info("FALLBACK: fallbackForRetry");
+        return Response.status(Response.Status.GATEWAY_TIMEOUT).entity("{\"error\": \"retry-invoked\"}").build();
+    }
+
+    /**
+     * requestVolumeThreshold(20): The size of the rolling window (number of requests) used to calculate
+     * the opening of a circuit
+     *
+     * failureRatio(0.5): Open the circuit if the ratio of failed requests within the
+     * requestVolumeThreshold window exceeds this number. For example,
+     * if the requestVolumeThreshold is 4, then two failed requests of the
+     * last four will open the circuit
+     *
+     * delay(5000ms): The amount of time the circuit remains open before allowing a request
+     *
+     * delayUnit(ChronoUnit.MILLIS): Time unit of the delay parameter
+     *
+     * successThreshold(1): The number of successful trial requests to close the circuit
+     *
+     * failOn(Any exception): List of exceptions which should be considered failures
+     *
+     * skipOn(None): List of exceptions that should not open the circuit. This list takes
+     * precedence over the types listed in the failOn parameter
+     *
+     * The @CircuitBreaker annotation can be used together with @Timeout, @Fallback, @Bulkhead, and @Retry.
+     *
+     * @return
+     */
+    @PUT
+    @Path("circuitbreaker/{cb}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @CircuitBreaker(
+            requestVolumeThreshold=3,
+            failureRatio=.66,
+            delay = 10,
+            delayUnit = ChronoUnit.SECONDS,
+            successThreshold=2
+    )
+    @Fallback(fallbackMethod = "fallbackOfStudentsCircuitBreaker")
+    public Object updateStudentWithCircuitBreaker(@PathParam("cb") String cb, Student student) {
+        Log.info("Watch CircuitBreaker");
+        if ("yes".equalsIgnoreCase(cb)) {
+            Log.error("Throwing RuntimeException to trigger CircuitBreaker");
+            throw new RuntimeException("updateStudent call failed");
+        }
+        LOGGER.info("CircuitBreaker-Update student by name {} from the REST client", student.getName());
+        Response response = studentRestClient.updateStudentByName(student);
+
+        return response;
+    }
+
+    private Object fallbackOfStudentsCircuitBreaker(String cb, Student student) {
+        Log.info("FALLBACK: Starting fallbackOfStudentsCircuitBreaker");
+        return Response.status(Response.Status.OK).entity("{\"error\": \"circuitbreaker-invoked\"}").build();
+    }
 
 
 }

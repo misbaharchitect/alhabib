@@ -31,7 +31,7 @@ public class SomePageAdmin {
 
     @GET
     @Produces(MediaType.TEXT_HTML)
-//    @RolesAllowed("admin")
+    @RolesAllowed("admin")
     public TemplateInstance get(@QueryParam("name") String name) {
         String data = firsrestSecuredClient.getDataAdmin();
         return myui.data("response", data);

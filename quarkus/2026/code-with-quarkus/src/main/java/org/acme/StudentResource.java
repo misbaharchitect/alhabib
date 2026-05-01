@@ -1,5 +1,6 @@
 package org.acme;
 
+import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 import org.slf4j.Logger;
@@ -14,6 +15,8 @@ import java.util.stream.Collectors;
 
 @Path("/students")
 public class StudentResource {
+    @Inject
+    StudentService studentService;
     private static final Logger LOGGER = LoggerFactory.getLogger(StudentResource.class);
     private static final List<Student> STUDENTS = new ArrayList<>() {
         {
