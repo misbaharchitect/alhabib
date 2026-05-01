@@ -1,4 +1,4 @@
-Total Duration: 24 hours
+Total Duration: 24 hours (3 Days)
 
 Quarkus with Micropofile and Kubernetes:
 Prerequisites: Java-17, Docker, Kubernetes (Docker and minikube)
