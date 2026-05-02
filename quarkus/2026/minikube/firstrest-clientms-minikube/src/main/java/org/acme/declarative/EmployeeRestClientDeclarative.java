@@ -11,7 +11,9 @@ import java.util.List;
 /**
  * Timeouts are set per client interface in the config file (application.properties).
  */
-@RegisterRestClient(baseUri = "http://localhost:8080")
+//@RegisterRestClient(baseUri = "http://localhost:8080")
+//@RegisterRestClient(baseUri = "http://firstrestms-minikube")
+@RegisterRestClient
 @Path("/employees")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)

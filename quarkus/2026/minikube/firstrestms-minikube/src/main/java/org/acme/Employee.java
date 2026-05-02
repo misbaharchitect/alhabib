@@ -1,0 +1,50 @@
+package org.acme;
+
+import java.time.LocalDate;
+
+public class Employee {
+
+    private String name;
+    private int age;
+    private LocalDate dob;
+    private int grade;
+
+    public Employee(String john, int i, String date, int i1) {
+        this.name = john;
+        this.age = i;
+        this.dob = LocalDate.parse(date);
+        this.grade = i1;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+    public int getGrade() {
+        return grade;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
+}
